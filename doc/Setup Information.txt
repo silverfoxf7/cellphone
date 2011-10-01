@@ -1,0 +1,2 @@
+1) http://help.github.com/win-set-up-git/
+2) gem install mechanize --include-dependencies
