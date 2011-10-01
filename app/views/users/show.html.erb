@@ -1,0 +1,26 @@
+TEST!</br>
+<%= @user.email %></br>
+  
+<div id="orders_chart" style="width: 560px; height: 300px;"></div>  
+  
+<table class="pretty">  
+	<script type="text/javascript" charset="utf-8">  
+	$(function () {  
+	  new Highcharts.Chart({  
+	    chart: { renderTo: 'orders_chart' },  
+	    title: { text: 'Orders by Day' },  
+	    xAxis: { type: 'datetime' },  
+	    yAxis: {  
+	      title: { text: 'Dollars' }  
+	    },  
+	    series: [{  
+	      pointInterval: <%= 1.day * 1000 %>,  
+	      pointStart: <%= 3.months.ago.at_midnight.to_i * 1000 %>,  
+		  data: <%= (3.months.ago.to_date..Date.today).map { |date| @user.total_usage(date).to_f}.inspect %>  
+	
+	    }]  
+	  });  
+	});
+	</script>
+
+</table>
