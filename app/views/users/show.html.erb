@@ -8,15 +8,15 @@ TEST!</br>
 	$(function () {  
 	  new Highcharts.Chart({  
 	    chart: { renderTo: 'orders_chart' },  
-	    title: { text: 'Orders by Day' },  
+	    title: { text: 'Usage by Day' },  
 	    xAxis: { type: 'datetime' },  
 	    yAxis: {  
-	      title: { text: 'Dollars' }  
+	      title: { text: 'Minutes' }  
 	    },  
 	    series: [{  
 	      pointInterval: <%= 1.day * 1000 %>,  
-	      pointStart: <%= 3.months.ago.at_midnight.to_i * 1000 %>,  
-		  data: <%= (3.months.ago.to_date..Date.today).map { |date| @user.total_usage(date).to_f}.inspect %>  
+	      pointStart: <%= 1.months.ago.at_midnight.to_i * 1000 %>,  
+		  data: <%= (1.months.ago.to_date..Date.today).map { |date| @user.total_usage(date).to_f}.inspect %>  
 	
 	    }]  
 	  });  
